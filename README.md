@@ -17,6 +17,7 @@ NIM : 23.01.55.0006
                           pengiriman.
                       b. Tombol selesaikan pesanan, setelah di klik pengguna akan diarahkan langsung ke halaman konfirmasi pesanan untuk pesanan dapat di selesaikan lebih
                          lanjut.
+                      c. Metode Pembayaran, setelah di klik oleh pengguna, maka pengguna bisa memilih metode untuk pembayarannya.
    - Konfirmasi Pesanan = a. Pengguna dapat melihat bahwa pesanannya sudah di terima dan akan di lanjutkan untuk proses selanjutnya, seperti pengiriman dan lain-lain.
                           b. Tombol kembali ke beranda, setelah di klik pengguna akan kembali lagi ke homepage/beranda.
    - Footer = Di bagian footer terdapat informasi kontak(email dan nomor telp), dan teks hak cipta.
