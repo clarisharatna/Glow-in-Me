@@ -1,7 +1,7 @@
 # WEBSITE TOKO MAKE UP "GLOW in Me"
 
-#Nama : Clarisha Ratna Dewati Rosy Saputri
-#NIM : 23.01.55.0006
+Nama : Clarisha Ratna Dewati Rosy Saputri
+NIM : 23.01.55.0006
 
 1. URL Web : 
 2. Penjelasan Fitur :
