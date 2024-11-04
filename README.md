@@ -5,7 +5,8 @@ NIM : 23.01.55.0006
 
 1. URL Web : 
 2. Penjelasan Fitur :
-   - Homepage (Beranda) = a. Menu navigasi yang memungkinkan pengguna dengan mudah berpindah halaman antara beranda, produk, dan keranjang.
+   - Homepage (Beranda) =
+         - a. Menu navigasi yang memungkinkan pengguna dengan mudah berpindah halaman antara beranda, produk, dan keranjang.
                           b. Mengubah gambar banner, degan menekan area kanan/kiri.
    - Halaman Produk =  a. Katalog Produk menampilkan daftar produk makeup lengkap dengan informasi seperti nama produk, gambar, harga.
                        b. Tombol detail jika di klik di setiap produk bisa menampilkan deskripsi produk, pilihan shade, dan menambahkan produk di keranjang.
