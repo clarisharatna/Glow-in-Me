@@ -20,7 +20,7 @@ NIM : 23.01.55.0006
                       c. Metode Pembayaran, setelah di klik oleh pengguna, maka pengguna bisa memilih metode untuk pembayarannya.
    - Konfirmasi Pesanan = a. Pengguna dapat melihat bahwa pesanannya sudah di terima dan akan di lanjutkan untuk proses selanjutnya, seperti pengiriman dan lain-lain.
                           b. Tombol kembali ke beranda, setelah di klik pengguna akan kembali lagi ke homepage/beranda.
-   - Footer = Di bagian footer terdapat informasi kontak(email dan nomor telp), dan teks hak cipta.
+   - Footer = Di bagian footer terdapat informasi kontak(email), teks hak cipta, logo whatsapp jika di klik oleh pengguna akan di arahkan ke halaman nomor whatsaap pemilik                  website, logo instagram dan maps juga sama, ketika di klik oleh pengguna akan di arahkan ke halaman instagram dan maps lokasi.
    - Penggunaan LocalStorage = Data pemesanan dan keranjang belanja disimpan menggunakan LocalStorage di browser, memungkinkan pengguna untuk tetap melihat produk yang telah
                                mereka pilih bahkan setelah merefresh halaman.
   3. Cara menjalankan website :
