@@ -3,7 +3,7 @@
 Nama : Clarisha Ratna Dewati Rosy Saputri
 NIM : 23.01.55.0006
 
-1. URL Web : 
+1. URL Web : http://localhost/make_up/
 2. Penjelasan Fitur :
    - Homepage (Beranda) =a. Menu navigasi yang memungkinkan pengguna dengan mudah berpindah halaman antara beranda, produk, dan keranjang.
                           b. Mengubah gambar banner, degan menekan area kanan/kiri.
@@ -25,6 +25,10 @@ NIM : 23.01.55.0006
    - Penggunaan LocalStorage = Data pemesanan dan keranjang belanja disimpan menggunakan LocalStorage di browser, memungkinkan pengguna untuk tetap melihat produk yang telah
                                mereka pilih bahkan setelah merefresh halaman.
   3. Cara menjalankan website :
+     - Clone repositosri ini atau unduh semua file yang di perlukan.
+     - Buka file index.html dengan browser untuk menjalankan website secara lokal.
+     - Pastikan semua file yang terkait seperti gambar, dan file lainnya ada di dalam folder yang benar, misalnya css untuk file style, dan folder js untuk script java.
+     - Pastikan lagi apache di xampp sudah menyala.
   4. Sumber gambar :
      - Banner 1 : https://i.pinimg.com/1200x/68/90/4e/68904e74d37a0e44a52d555bf8a0a23c.jpg
      - Banner 2 : https://i.pinimg.com/1200x/03/38/19/033819be1d8177757aaa612bca030746.jpg
@@ -39,3 +43,6 @@ NIM : 23.01.55.0006
      -    'Maybelline Instant Anti Age Concealer': 'https://i.pinimg.com/1200x/56/d0/0a/56d00a721b758826b9ac144448609ce8.jpg',
      -    'Pixi On The Glow Blushes': 'https://i.pinimg.com/1200x/5e/e7/c8/5ee7c83f6028d85041c6ae980fdb97d4.jpg',
      -    'Laura Mercier Translucent Loose Powder': 'https://i.pinimg.com/1200x/27/8c/0d/278c0dd71d323b7fbebf0e861cb04788.jpg'
+     -    Logo whatsapp : https://www.pngwing.com/id/free-png-vnhys
+     -    Logo instagram : https://www.pngwing.com/id/free-png-nnvyn
+     -    Logo maps : https://www.pngwing.com/id/free-png-yhsyz
