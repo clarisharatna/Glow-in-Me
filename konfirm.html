@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesanan Diterima - Glow in Me</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Menjamin bahwa footer tetap di bawah */
+        }
+        .container {
+            flex: 1; /* Mengambil ruang yang tersedia di halaman */
+        }
+        footer {
+            background-color:  #f8f9fa; /* Background footer menjadi putih */
+            color: rgb(244, 121, 141); /* Mengubah warna tulisan footer menjadi pink */
+            position: relative; /* Untuk memastikan tidak ada masalah dengan positioning */
+        }
+        footer p {
+            margin: 0; /* Menghilangkan margin untuk teks footer */
+        }
+        .btn-custom {
+            background-color: pink; /* Latar belakang tombol menjadi pink */
+            color: white; /* Warna teks tombol menjadi putih */
+            border: 1px solid pink; /* Border tombol menjadi pink */
+        }
+        .btn-custom:hover {
+            background-color: white; /* Mengubah latar belakang tombol menjadi putih saat hover */
+            color: pink; /* Mengubah warna teks menjadi pink saat hover */
+        }
+
+        .whatsapp-logo {
+            width: 30px; /* Ubah ukuran sesuai kebutuhan */
+            height: 30px; /* Ubah ukuran sesuai kebutuhan */
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="border-bottom py-3">
+    <div class="container d-flex justify-content-between align-items-center">
+        <div class="logo">
+            <h1 class="h4">Glow in Me</h1>
+        </div>
+        <nav>
+            <a href="index.html" class="mx-2">Beranda</a>
+            <a href="products.html" class="mx-2">Produk</a>
+            <a href="checkout.html" class="mx-2">Keranjang</a>
+        </nav>
+    </div>
+</header>
+
+<!-- Pesanan Diterima -->
+<section class="container my-5 text-center">
+    <h2 class="mb-4">Pesanan Anda Telah Diterima</h2>
+    <p>Terima kasih telah berbelanja di Glow in Me! Pesanan Anda telah diproses.</p>
+    <p>Anda akan menerima konfirmasi melalui email segera.</p>
+    <a href="index.html" class="btn btn-custom">Kembali ke Beranda</a>
+</section>
+
+<!-- Footer -->
+<footer class="text-center py-4">
+    <a href="https://wa.me/628817631003" target="_blank" class="whatsapp-link">
+        <img src="wasap.png" alt="WhatsApp Logo" class="whatsapp-logo">
+    </a>
+    <a href="https://www.instagram.com/shasapt_/" target="_blank" class="whatsapp-link">
+        <img src="insta.png" alt="WhatsApp Logo" class="whatsapp-logo">
+    </a>
+    <a href="https://maps.app.goo.gl/wn6bW1gfyPsybH8c7" target="_blank" class="whatsapp-link">
+        <img src="maps.png" alt="WhatsApp Logo" class="whatsapp-logo">
+    </a>
+    <p>© 2023 Glow in Me | Kontak: glowinme@example.com | 0881-7631-003</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

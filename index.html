@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toko Makeup - Glow in Me</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Mengatur ukuran gambar di carousel */
+        #bannerCarousel .carousel-item img {
+            max-height: 400px; /* Sesuaikan tinggi maksimum sesuai kebutuhan */
+            object-fit: cover; /* Memastikan gambar tidak terdistorsi */
+            width: 80%; /* Mengubah lebar gambar menjadi 80% */
+            margin: 0 auto; /* Memusatkan gambar di dalam item */
+        }
+
+        /* Menambahkan margin atas pada footer */
+        footer {
+            margin-top: 20px; /* Mengurangi nilai ini untuk menaikkan footer */
+            background-color: #f8f9fa; /* Latar belakang footer putih */
+        }
+
+        .bg-pink {
+            background-color: #ffb6c1;
+        }
+
+        /* Mengatur tampilan body agar footer selalu di bawah */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Memastikan footer berada di bagian bawah */
+        }
+
+        main {
+            flex: 1; /* Memungkinkan main mengambil ruang yang tersisa */
+        }
+
+        .text-pink {
+            color: #ff69b4; /* Warna pink untuk teks footer */
+        }
+
+        .whatsapp-logo {
+            width: 30px; /* Ubah ukuran sesuai kebutuhan */
+            height: 30px; /* Ubah ukuran sesuai kebutuhan */
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="border-bottom py-3">
+    <div class="container d-flex justify-content-between align-items-center">
+        <div class="logo">
+            <h1 class="h4">Glow in Me</h1>
+        </div>
+        <nav>
+            <a href="index.html" class="mx-2">Beranda</a>
+            <a href="produk.html" class="mx-2">Produk</a>
+            <a href="checkout.html" class="mx-2">Keranjang</a>
+        </nav>
+    </div>
+</header>
+
+<!-- Main Content -->
+<main>
+    <!-- Banner/Slider -->
+    <div id="bannerCarousel" class="carousel slide my-3" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://i.pinimg.com/1200x/68/90/4e/68904e74d37a0e44a52d555bf8a0a23c.jpg" class="d-block" alt="Promo 1">
+            </div>
+            <div class="carousel-item">
+                <img src="https://i.pinimg.com/1200x/03/38/19/033819be1d8177757aaa612bca030746.jpg" class="d-block" alt="Promo 2">
+            </div>
+            <div class="carousel-item">
+                <img src="https://i.pinimg.com/1200x/72/d4/fa/72d4fa0236f64489489b241b22887fda.jpg" class="d-block" alt="Promo 3">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#bannerCarousel" data-bs-slide="prev" style="top: 50%; transform: translateY(-50%);">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#bannerCarousel" data-bs-slide="next" style="top: 50%; transform: translateY(-50%);">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="text-center py-4">
+    <a href="https://wa.me/628817631003" target="_blank" class="whatsapp-link">
+        <img src="wasap.png" alt="WhatsApp Logo" class="whatsapp-logo">
+    </a>
+    <a href="https://www.instagram.com/shasapt_/" target="_blank" class="whatsapp-link">
+        <img src="insta.png" alt="WhatsApp Logo" class="whatsapp-logo">
+    </a>
+    <a href="https://maps.app.goo.gl/wn6bW1gfyPsybH8c7" target="_blank" class="whatsapp-link">
+        <img src="maps.png" alt="WhatsApp Logo" class="whatsapp-logo">
+    </a>
+    <p class="text-pink">© 2023 Glow in Me | Kontak: glowinme@example.com</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>

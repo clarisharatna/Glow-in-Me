@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pemesanan - Glow in Me</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        footer {
+            background-color:  #f8f9fa; /* Mengubah background footer menjadi putih */
+        }
+        .btn-custom {
+            background-color: pink !important; /* Mengubah tombol menjadi pink */
+            border: none; /* Menghilangkan border tombol */
+        }
+        footer p {
+            color: rgb(251, 131, 151); /* Mengubah warna tulisan footer menjadi pink */
+        }
+
+        .whatsapp-logo {
+            width: 30px; /* Ubah ukuran sesuai kebutuhan */
+            height: 30px; /* Ubah ukuran sesuai kebutuhan */
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="border-bottom py-3">
+    <div class="container d-flex justify-content-between align-items-center">
+        <div class="logo">
+            <h1 class="h4">Glow in Me</h1>
+        </div>
+        <nav>
+            <a href="index.html" class="mx-2">Beranda</a>
+            <a href="produk.html" class="mx-2">Produk</a>
+            <a href="checkout.html" class="mx-2">Keranjang</a>
+        </nav>
+    </div>
+</header>
+
+<!-- Form Pemesanan -->
+<section class="container my-5">
+    <h2 class="mb-4">Form Pemesanan</h2>
+    <div id="order-items" class="mb-4"></div>
+
+    <h4>Informasi Pembeli</h4>
+    <form id="order-form">
+        <div class="mb-3">
+            <label for="name" class="form-label">Nama Lengkap</label>
+            <input type="text" class="form-control" id="name" required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" required>
+        </div>
+        <div class="mb-3">
+            <label for="phone" class="form-label">Nomor Telepon</label>
+            <input type="tel" class="form-control" id="phone" required>
+        </div>
+        <div class="mb-3">
+            <label for="address" class="form-label">Alamat Lengkap</label>
+            <textarea class="form-control" id="address" rows="3" required></textarea>
+        </div>
+        
+        <div class="mb-3">
+            <label for="paymentMethod" class="form-label">Metode Pembayaran</label>
+            <select class="form-select" id="paymentMethod" required>
+                <option value="" disabled selected>Pilih metode pembayaran</option>
+                <option value="cash">Tunai</option>
+                <option value="bank_transfer">Transfer Bank</option>
+                <option value="ewallet">E-wallet</option>
+                <option value="indomaret">Indomaret</option>
+                <option value="alfamart">Alfamart</option>
+                <option value="virtual_account">Virtual Account</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-custom">Selesaikan Pemesanan</button> <!-- Tombol menggunakan kelas custom -->
+    </form>
+</section>
+
+<!-- Footer -->
+<footer class="text-center py-4">
+    <a href="https://wa.me/628817631003" target="_blank" class="whatsapp-link">
+        <img src="wasap.png" alt="WhatsApp Logo" class="whatsapp-logo">
+    </a>
+    <a href="https://www.instagram.com/shasapt_/" target="_blank" class="whatsapp-link">
+        <img src="insta.png" alt="WhatsApp Logo" class="whatsapp-logo">
+    </a>
+    <a href="https://maps.app.goo.gl/wn6bW1gfyPsybH8c7" target="_blank" class="whatsapp-link">
+        <img src="maps.png" alt="WhatsApp Logo" class="whatsapp-logo">
+    </a>
+    <p>© 2023 Glow in Me | Kontak: glowinme@example.com | 0881-7631-003</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// Mendapatkan data produk yang dipilih dari localStorage
+const selectedItems = JSON.parse(localStorage.getItem('selectedItems')) || [];
+
+function displayOrderItems() {
+    const orderContainer = document.getElementById('order-items');
+    orderContainer.innerHTML = '';
+
+    if (selectedItems.length === 0) {
+        orderContainer.innerHTML = '<p>Tidak ada produk yang dipilih.</p>';
+        return;
+    }
+
+    // Menampilkan produk yang dipilih di halaman order
+    selectedItems.forEach(item => {
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'd-flex justify-content-between align-items-center border-bottom py-2';
+        itemDiv.innerHTML = `
+            <div>
+                <h5>${item.name}</h5>
+                <p>Harga: Rp${item.price} | Kuantitas: ${item.quantity}</p>
+            </div>
+        `;
+        orderContainer.appendChild(itemDiv);
+    });
+}
+
+// Memanggil fungsi untuk menampilkan item yang dipilih saat halaman dimuat
+document.addEventListener('DOMContentLoaded', displayOrderItems);
+
+// Menyimpan informasi pembeli dan menyelesaikan pesanan
+document.getElementById('order-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Mencegah pengiriman form secara default
+
+    // Mengambil data dari form
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
+    const address = document.getElementById('address').value;
+    const paymentMethod = document.getElementById('paymentMethod').value;
+
+    // Menyimpan detail pengguna ke localStorage
+    localStorage.setItem('name', name);
+    localStorage.setItem('email', email);
+    localStorage.setItem('phone', phone);
+    localStorage.setItem('address', address);
+    localStorage.setItem('paymentMethod', paymentMethod); // Menyimpan metode pembayaran
+
+    // Proses pemesanan bisa ditambahkan di sini
+
+    alert('Pesanan Anda telah diterima!');
+    localStorage.removeItem('selectedItems'); // Menghapus data yang telah diproses
+    window.location.href = 'konfirm.html'; // Halaman konfirmasi pesanan
+});
+</script>
+</body>
+</html>

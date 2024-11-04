@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keranjang - Glow in Me</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Styles untuk halaman */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        .product-card {
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            margin-bottom: 20px;
+            border: 1px solid #ddd; 
+            border-radius: 8px; 
+            padding: 15px; 
+            background-color: #f9f9f9; 
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+        }
+
+        .card-img-top {
+            width: 150px; 
+            height: 150px; 
+            object-fit: cover; 
+            margin-right: 20px; 
+        }
+
+        .text-pink {
+            color: #ff69b4; 
+        }
+
+        .details {
+            display: flex;
+            flex-direction: column; 
+            flex-grow: 1; 
+        }
+
+        .quantity-total-remove {
+            display: flex;
+            flex-direction: column; 
+            align-items: flex-end; 
+        }
+
+        .remove-button {
+            margin-top: 10px; 
+            border: 1px solid #ff69b4; 
+            color: #ff69b4; 
+            background-color: white; 
+        }
+
+        .remove-button:hover {
+            background-color: #ff69b4; 
+            color: white; 
+        }
+
+        .checkout-button {
+            border: 1px solid #ff69b4; 
+            color: #ff69b4; 
+            background-color: white; 
+        }
+
+        .checkout-button:hover {
+            background-color: #ff69b4; 
+            color: white; 
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center; 
+            margin-right: 10px; 
+        }
+
+        .total-checkout-container {
+            position: relative; 
+            margin-bottom: 20px; 
+        }
+
+        .total-checkout-container h4 {
+            font-size: 18px; 
+        }
+
+        footer {
+            margin-top: 20px; 
+            background-color:  #f8f9fa; 
+        }
+
+        .whatsapp-logo {
+            width: 30px; /* Ubah ukuran sesuai kebutuhan */
+            height: 30px; /* Ubah ukuran sesuai kebutuhan */
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+
+<header class="border-bottom py-3">
+    <div class="container d-flex justify-content-between align-items-center">
+        <div class="logo">
+            <h1 class="h4">Glow in Me</h1>
+        </div>
+        <nav>
+            <a href="index.html" class="mx-2">Beranda</a>
+            <a href="produk.html" class="mx-2">Produk</a>
+            <a href="checkout.html" class="mx-2">Keranjang</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container my-4">
+    <h2 class="text-center">Keranjang Anda</h2>
+    <div id="cartItems" class="mt-4"></div>
+    <div class="text-end total-checkout-container">
+        <h4>Total: <span id="totalPrice">0</span> IDR</h4>
+        <button class="btn btn-pink checkout-button" id="checkoutButton">Checkout</button>
+    </div>
+</main>
+
+<footer class="text-center py-4">
+    <a href="https://wa.me/628817631003" target="_blank" class="whatsapp-link">
+        <img src="wasap.png" alt="WhatsApp Logo" class="whatsapp-logo">
+    </a>
+    <a href="https://www.instagram.com/shasapt_/" target="_blank" class="whatsapp-link">
+        <img src="insta.png" alt="WhatsApp Logo" class="whatsapp-logo">
+    </a>
+    <a href="https://maps.app.goo.gl/wn6bW1gfyPsybH8c7" target="_blank" class="whatsapp-link">
+        <img src="maps.png" alt="WhatsApp Logo" class="whatsapp-logo">
+    </a>
+    <p class="text-pink">© 2023 Glow in Me | Kontak: glowinme@example.com | 0881-7631-003</p>
+</footer>
+
+<script>
+// Fungsi untuk menampilkan keranjang dengan total harga dan rincian produk
+function displayCart() {
+    const cartItemsContainer = document.getElementById("cartItems");
+    const totalPriceContainer = document.getElementById("totalPrice");
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    
+    // Menghapus konten sebelumnya
+    cartItemsContainer.innerHTML = '';
+
+    // Menampilkan setiap produk di keranjang
+    cartItems.forEach((item, index) => {
+        const productTotal = item.price * item.quantity;
+
+        // Mendapatkan URL gambar produk berdasarkan nama produk
+        const imageUrl = getImageUrl(item.name);
+
+        // Membuat elemen card untuk setiap produk
+        const productCard = document.createElement("div");
+        productCard.className = "product-card";
+
+        productCard.innerHTML = `
+            <div class="checkbox-container">
+                <input type="checkbox" class="product-checkbox" data-index="${index}" data-total="${productTotal}">
+            </div>
+            <img src="${imageUrl}" class="card-img-top" alt="${item.name}">
+            <div class="details">
+                <h5 class="card-title">${item.name}</h5>
+                <p class="card-text">Harga: ${item.price} IDR</p>
+                <p class="card-text">Shade: ${item.shade}</p>
+            </div>
+            <div class="quantity-total-remove">
+                <p class="card-text">Jumlah: 
+                    <button class="btn btn-sm btn-outline-secondary" onclick="updateQuantity(${index}, -1)">-</button> 
+                    <span id="quantity-${index}">${item.quantity}</span> 
+                    <button class="btn btn-sm btn-outline-secondary" onclick="updateQuantity(${index}, 1)">+</button>
+                </p>
+                <p class="card-text">Total: ${productTotal} IDR</p>
+                <button class="btn btn-sm remove-button" onclick="removeItem(${index})">Hapus</button>
+            </div>
+        `;
+        cartItemsContainer.appendChild(productCard);
+    });
+
+    // Event listener untuk setiap checkbox produk
+    const checkboxes = document.querySelectorAll(".product-checkbox");
+    checkboxes.forEach((checkbox) => {
+        checkbox.addEventListener('change', updateTotalPrice);
+    });
+}
+
+// Fungsi untuk memperbarui harga total berdasarkan pilihan pengguna
+function updateTotalPrice() {
+    const checkboxes = document.querySelectorAll(".product-checkbox");
+    let total = 0;
+
+    checkboxes.forEach((checkbox) => {
+        if (checkbox.checked) {
+            total += parseInt(checkbox.getAttribute("data-total"));
+        }
+    });
+
+    document.getElementById("totalPrice").textContent = total;
+}
+
+// Fungsi untuk memperbarui jumlah produk
+function updateQuantity(index, change) {
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    
+    // Mengubah jumlah produk
+    cartItems[index].quantity += change;
+
+    // Jika jumlah kurang dari 1, hapus produk dari keranjang
+    if (cartItems[index].quantity < 1) {
+        cartItems.splice(index, 1); // Menghapus produk
+    }
+
+    // Simpan kembali ke localStorage
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    displayCart(); // Tampilkan ulang keranjang
+}
+
+// Fungsi untuk menghapus produk dari keranjang
+function removeItem(index) {
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    cartItems.splice(index, 1); // Menghapus produk
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    displayCart(); // Tampilkan ulang keranjang
+}
+
+// Mengambil URL gambar berdasarkan nama produk
+function getImageUrl(productName) {
+    const images = {
+        'Yves Saint Laurent Lip Oil Stick': 'https://i.pinimg.com/1200x/ac/b6/9f/acb69fa4a40050482e6e5eed50431c8c.jpg',
+        'NARS Light Reflecting Foundation': 'https://i.pinimg.com/1200x/c3/10/5f/c3105f202d5836835e5711b90ab36862.jpg',
+        'Dior Eyeshadow Palette': 'https://i.pinimg.com/1200x/ef/f3/20/eff32002ad93149039cc03990ec79bf3.jpg',
+        'TIRTIR Mask Fit Red Cushion': 'https://i.pinimg.com/1200x/22/02/8e/22028e56c317318fd3f79ef68ed740e5.jpg',
+        'Too Faced Better Than Sex Mascara': 'https://i.pinimg.com/1200x/27/ef/27/27ef277f951e77aa05d321d419b34b73.jpg',
+        'Barenbliss Make me Classy Eyebrow': 'https://i.pinimg.com/1200x/50/1c/da/501cda6dc3dd2ca1af9b998d6ad32d99.jpg',
+        'Missha Cotton Contour': 'https://i.pinimg.com/1200x/e5/6f/58/e56f58f9dfbadff7d777f62f8456950c.jpg',
+        'Maybelline Instant Anti Age Concealer': 'https://i.pinimg.com/1200x/56/d0/0a/56d00a721b758826b9ac144448609ce8.jpg',
+        'Pixi On The Glow Blushes': 'https://i.pinimg.com/1200x/5e/e7/c8/5ee7c83f6028d85041c6ae980fdb97d4.jpg',
+        'Laura Mercier Translucent Loose Powder': 'https://i.pinimg.com/1200x/27/8c/0d/278c0dd71d323b7fbebf0e861cb04788.jpg'
+    };
+
+    return images[productName] || 'https://via.placeholder.com/150'; // URL gambar default jika tidak ada
+}
+
+// Inisialisasi tampilan keranjang saat halaman dimuat
+document.addEventListener('DOMContentLoaded', displayCart);
+
+// Fungsi untuk checkout
+document.getElementById('checkoutButton').addEventListener('click', function() {
+    const checkboxes = document.querySelectorAll(".product-checkbox");
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    const selectedItems = [];
+
+    // Menyimpan produk yang dicentang ke dalam selectedItems
+    checkboxes.forEach((checkbox, index) => {
+        if (checkbox.checked) {
+            selectedItems.push(cartItems[index]);
+        }
+    });
+
+    if (selectedItems.length === 0) {
+        alert("Pilih setidaknya satu produk untuk di-checkout!");
+    } else {
+        // Simpan produk yang dipilih ke localStorage
+        localStorage.setItem('selectedItems', JSON.stringify(selectedItems));
+
+        // Arahkan pengguna ke halaman order
+        window.location.href = 'order.html';
+    }
+});
+</script>
+
+</body>
+</html>

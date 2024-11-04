@@ -1,0 +1,89 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500&display=swap');
+
+/* Atur font default untuk seluruh halaman */
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: #333;
+    background-color: #fff;
+}
+
+/* Styling untuk header dan navigasi */
+header {
+    background-color: #fff;
+    color: #e91e63;
+    border-bottom: 1px solid #ddd;
+}
+
+header .logo h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: #e91e63;
+}
+
+header nav a {
+    font-family: 'Montserrat', sans-serif;
+    color: #e91e63;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+header nav a:hover {
+    color: #d81b60;
+}
+
+/* Styling untuk keranjang */
+.cart-item {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+}
+
+.quantity-control button {
+    width: 30px;
+    height: 30px;
+    background-color: #e91e63;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.quantity-control .product-quantity {
+    width: 40px;
+    text-align: center;
+    border: 1px solid #ddd;
+    margin: 0 5px;
+}
+
+/* Footer styling */
+footer {
+    background-color: #f8bbd0;
+    color: #333;
+    padding: 20px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+footer p {
+    margin: 0;
+    font-size: 14px;
+}
+
+/* Styling tambahan untuk heading */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    color: #333;
+}
+
+/* Font umum untuk teks, tombol, dan elemen lainnya */
+p, a, li, span, .btn {
+    font-family: 'Montserrat', sans-serif;
+    color: #333;
+}

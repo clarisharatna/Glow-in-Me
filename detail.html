@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Produk - Glow in Me</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .product-image {
+            width: 100%;
+            height: auto;
+        }
+        .btn-pink {
+            background-color: #ff69b4;
+            color: white;
+        }
+        .btn-pink:hover {
+            background-color: #ff1493;
+            color: white;
+        }
+        footer {
+            background-color: white;
+            color: #ff69b4;
+        }
+        footer p {
+            margin: 0;
+        }
+
+        .whatsapp-logo {
+            width: 30px; /* Ubah ukuran sesuai kebutuhan */
+            height: 30px; /* Ubah ukuran sesuai kebutuhan */
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="border-bottom py-3">
+    <div class="container d-flex justify-content-between align-items-center">
+        <div class="logo">
+            <h1 class="h4">Glow in Me</h1>
+        </div>
+        <nav>
+            <a href="index.html" class="mx-2">Beranda</a>
+            <a href="produk.html" class="mx-2">Produk</a>
+            <a href="checkout.html" class="mx-2">Keranjang</a>
+        </nav>
+    </div>
+</header>
+
+<!-- Detail Produk -->
+<section class="container my-5">
+    <div class="row">
+        <div class="col-md-6">
+            <img id="productImage" class="product-image" alt="Detail Produk">
+        </div>
+        <div class="col-md-6">
+            <h2 id="productName">Nama Produk</h2>
+            <p id="productPrice" class="h4">Rp0</p>
+            <p id="productDescription">Deskripsi produk akan ditampilkan di sini.</p>
+
+            <!-- Dropdown untuk memilih shade -->
+            <label for="shadeSelect" class="form-label">Pilih Shade:</label>
+            <select id="shadeSelect" class="form-select mb-3">
+                <option value="" selected>Pilih shade</option>
+            </select>
+
+            <button id="addToCartButton" class="btn btn-pink">Tambah ke Keranjang</button>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="border-top py-3">
+    <div class="container text-center">
+        <a href="https://wa.me/628817631003" target="_blank" class="whatsapp-link">
+            <img src="wasap.png" alt="WhatsApp Logo" class="whatsapp-logo">
+        </a>
+        <a href="https://www.instagram.com/shasapt_/" target="_blank" class="whatsapp-link">
+            <img src="insta.png" alt="WhatsApp Logo" class="whatsapp-logo">
+        </a>
+        <a href="https://maps.app.goo.gl/wn6bW1gfyPsybH8c7" target="_blank" class="whatsapp-link">
+            <img src="maps.png" alt="WhatsApp Logo" class="whatsapp-logo">
+        </a>
+        <p>© 2023 Glow in Me | Kontak: glowinme@example.com | 0881-7631-003</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Mendapatkan parameter URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const productName = urlParams.get('product');
+    const productPrice = urlParams.get('price');
+    
+    // Mengupdate halaman dengan data produk
+    document.getElementById('productName').innerText = productName;
+    document.getElementById('productPrice').innerText = 'Rp' + parseInt(productPrice).toLocaleString();
+    document.getElementById('productImage').src = getImageUrl(productName);
+    document.getElementById('productDescription').innerText = getDescription(productName);
+    
+    // Menampilkan opsi shade berdasarkan produk yang dipilih
+    populateShades(productName);
+
+    function getImageUrl(productName) {
+        const images = {
+            'Yves Saint Laurent Lip Oil Stick': 'https://i.pinimg.com/1200x/ac/b6/9f/acb69fa4a40050482e6e5eed50431c8c.jpg',
+            'NARS Light Reflecting Foundation': 'https://i.pinimg.com/1200x/c3/10/5f/c3105f202d5836835e5711b90ab36862.jpg',
+            'Dior Eyeshadow Palette': 'https://i.pinimg.com/1200x/ef/f3/20/eff32002ad93149039cc03990ec79bf3.jpg',
+            'TIRTIR Mask Fit Red Cushion': 'https://i.pinimg.com/1200x/22/02/8e/22028e56c317318fd3f79ef68ed740e5.jpg',
+            'Too Faced Better Than Sex Mascara': 'https://i.pinimg.com/1200x/27/ef/27/27ef277f951e77aa05d321d419b34b73.jpg',
+            'Barenbliss Make me Classy Eyebrow': 'https://i.pinimg.com/1200x/50/1c/da/501cda6dc3dd2ca1af9b998d6ad32d99.jpg',
+            'Missha Cotton Contour': 'https://i.pinimg.com/1200x/e5/6f/58/e56f58f9dfbadff7d777f62f8456950c.jpg',
+            'Maybelline Instant Anti Age Concealer': 'https://i.pinimg.com/1200x/56/d0/0a/56d00a721b758826b9ac144448609ce8.jpg',
+            'Pixi On The Glow Blushes': 'https://i.pinimg.com/1200x/5e/e7/c8/5ee7c83f6028d85041c6ae980fdb97d4.jpg',
+            'Laura Mercier Translucent Loose Powder': 'https://i.pinimg.com/1200x/27/8c/0d/278c0dd71d323b7fbebf0e861cb04788.jpg'
+        };
+        return images[productName] || '';
+    }
+
+    function getDescription(productName) {
+        const descriptions = {
+            'Yves Saint Laurent Lip Oil Stick': 'Lip oil stick yang memberikan kelembapan dan warna natural.',
+            'NARS Light Reflecting Foundation': 'Foundation ringan yang memberikan tampilan flawless.',
+            'Dior Eyeshadow Palette': 'Palet eyeshadow dengan pilihan warna yang beragam.',
+            'TIRTIR Mask Fit Red Cushion': 'Cushion dengan formula masker untuk tampilan segar.',
+            'Too Faced Better Than Sex Mascara': 'Maskara volumizing yang memberikan tampilan bulu mata tebal.',
+            'Barenbliss Make me Classy Eyebrow': 'Pensil alis yang mudah digunakan untuk tampilan natural.',
+            'Missha Cotton Contour': 'Produk contour dengan tekstur lembut untuk tampilan yang cantik.',
+            'Maybelline Instant Anti Age Concealer': 'Korektor untuk menyamarkan noda dan garis halus.',
+            'Pixi On The Glow Blushes': 'Blush on cair yang memberikan rona segar pada pipi.',
+            'Laura Mercier Translucent Loose Powder': 'Powder ringan yang memberikan hasil akhir matte sempurna.'
+        };
+        return descriptions[productName] || 'Deskripsi tidak tersedia.';
+    }
+
+    // Fungsi untuk menampilkan shade berdasarkan produk
+    function populateShades(productName) {
+        const shades = {
+            'Yves Saint Laurent Lip Oil Stick': ['Rosewood Blush', 'Electric Love', 'Coral Crush', 'Glowing Lava'],
+            'NARS Light Reflecting Foundation': ['Mont Blanc', 'YangYang', 'Gion', 'Kailash'],
+            'Dior Eyeshadow Palette': ['Celestial Purple', 'Warm Neutrals', 'Smoky Essentials', 'Warm Essentials'],
+            'TIRTIR Mask Fit Red Cushion': ['Cool Ivory', 'Cool Beige', 'Sand','Rich Honer'],
+            'Too Faced Better Than Sex Mascara': ['Black', 'Chocolate', 'Black Foreplay'],
+            'Barenbliss Make me Classy Eyebrow': ['Walnut Brown', 'Hot Chocolate'],
+            'Missha Cotton Contour': ['Smoked Hazel', 'Baked Bagel', 'Sugar Toast', 'Salted Hotchoco'],
+            'Maybelline Instant Anti Age Concealer': ['Sand', 'Neutralizer', 'Honey', 'Light'],
+            'Pixi On The Glow Blushes': ['Shy Pink', 'Hot Red', 'Coral Orange'],
+            'Laura Mercier Translucent Loose Powder': ['Translucent Levels 1-2', 'Translucent Honey Levels 3-4', 'Translucent Medium Deep Levels 5-6']
+        };
+
+        const shadeSelect = document.getElementById('shadeSelect');
+        shadeSelect.innerHTML = '<option value="" selected>Pilih shade</option>'; // Reset opsi
+        
+        const productShades = shades[productName] || [];
+        productShades.forEach(shade => {
+            const option = document.createElement('option');
+            option.value = shade;
+            option.innerText = shade;
+            shadeSelect.appendChild(option);
+        });
+    }
+
+    document.getElementById('addToCartButton').onclick = function() {
+        const shade = document.getElementById('shadeSelect').value;
+        if (!shade) {
+            alert('Silakan pilih shade sebelum menambahkan ke keranjang!');
+            return;
+        }
+        addToCart(productName, parseInt(productPrice), shade);
+    }
+
+    function addToCart(productName, productPrice, shade) {
+        const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        const existingItem = cartItems.find(item => item.name === productName && item.shade === shade);
+
+        if (existingItem) {
+            existingItem.quantity += 1;
+        } else {
+            cartItems.push({ name: productName, price: productPrice, shade: shade, quantity: 1 });
+        }
+
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+        alert(`Produk dengan shade ${shade} telah ditambahkan ke keranjang!`);
+    }
+</script>
+</body>
+</html>
